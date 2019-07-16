@@ -211,7 +211,7 @@ public class QuizGUI extends Application {
 		GridQuizApplication.add(division, 0, 4);
 	}
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+//	public static void main(String[] args) {
+//		launch(args);
+//	}
 }
