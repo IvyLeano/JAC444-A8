@@ -1,36 +1,38 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Countries {
-	String[][] m_map = 
-		{ 
-//				25 COUNTRIES AND THEIR CAPITALS, NUMBERED IN ALPHABETICAL ORDER
-				{"1", "AFGHANISTAN", "KABUL" }, 
-				{"2", "ARGENTINA", "BUENOS AIRES" }, 
-				{"3", "AUSTRALIA", "CANBERRA" }, 
-				{"4", "AUSTRIA", "VIENNA" }, 
-				{"5", "BANGLADESH", "DHAKA" }, 
-				{"6", "BELGIUM", "BRUSSELS" }, 
-				{"7", "CANADA", "OTTAWA" }, 
-				{"8", "CHILE", "SANTIAGO" }, 
-				{"9", "CHINA", "BEIJING" }, 
-				{"10", "COSTA RICA", "SAN JOSE" }, 
-				{"11", "CUBA", "HAVANA" }, 
-				{"12", "ECUADOR", "QUITO" }, 
-				{"13", "FIJI", "SUVA" }, 
-				{"14", "FINLAND", "HELSINKI"}, 
-				{"15", "FRANCE", "PARIS" }, 
-				{"16", "GERMANY", "BERLIN" }, 
-				{"17", "GREECE", "ATHENS" }, 
-				{"18", "INDIA", "NEW DELHI" }, 
-				{"19", "ITALY", "ROME" }, 
-				{"20", "JAPAN", "TOKYO" }, 
-				{"21", "PERU", "LIMA" }, 
-				{"22", "PHILIPPINES", "MANILA" }, 
-				{"23", "POLAND", "WARSAW" }, 
-				{"24", "QATAR", "DOHA" }, 
-				{"25", "VIETNAM", "HANOI" } 		
-		};
-	
+Map<String, String> m_map = new HashMap<>();
+
+//				25 COUNTRIES AND THEIR CAPITALS, NUMBERED IN ALPHABETICAL ORDER	
+public void initialize(){
+	m_map.put("AFGHANISTAN", "KABUL");
+	m_map.put("ARGENTINA", "BUENOS AIRES");
+	m_map.put("AUSTRALIA", "CANBERRA");
+	m_map.put("AUSTRIA", "VIENNA");
+	m_map.put("BANGLADESH", "DHAKA");
+	m_map.put("BELGIUM", "BRUSSELS" );
+	m_map.put("CANADA", "OTTAWA");
+	m_map.put("CHILE", "SANTIAGO");
+	m_map.put("CHINA", "BEIJING");
+	m_map.put("COSTA RICA", "SAN JOSE");
+	m_map.put("CUBA", "HAVANA");
+	m_map.put("ECUADOR", "QUITO");
+	m_map.put("FIJI", "SUVA");
+	m_map.put("FINLAND", "HELSINKI");
+	m_map.put("FRANCE", "PARIS");
+	m_map.put("GERMANY", "BERLIN");
+	m_map.put("GREECE", "ATHENS");
+	m_map.put("INDIA", "NEW DELHI");
+	m_map.put("ITALY", "ROME");
+	m_map.put("JAPAN", "TOKYO");
+	m_map.put("PERU", "LIMA");
+	m_map.put("PHILIPPINES", "MANILA");
+	m_map.put("POLAND", "WARSAW");
+	m_map.put("QATAR", "DOHA");
+	m_map.put("VIETNAM", "HANOI");
+}	
 	
 //Prompts user to input country, validates input
 	@SuppressWarnings("resource")
@@ -65,13 +67,12 @@ public class Countries {
 
 	// searches for the country in the list and returns the capital if the country
 	// is listed
+	@SuppressWarnings("unlikely-arg-type")
 	String getCapital(String country) {
-		String capital = country + " is currently not listed on the map.\n\n";
-		search: for (int i = 0; i < 25; i++) {
-			if (m_map[i][1].equalsIgnoreCase(country.toUpperCase())) {
-				capital = "The capital of " + country + " is " + m_map[i][2] + "\n\n";
-				break search;
-			}
+		String capital = country.toUpperCase() + " is currently not listed on the map.\n\n";
+		
+		if(m_map.containsKey(country.toUpperCase())) {
+			capital = "The capital of " + country.toUpperCase() + " is " + m_map.get(country.toUpperCase()) + "\n\n";
 		}
 		return capital;
 	}
